@@ -1,0 +1,19 @@
+{
+  "name": "NameserverChecker",
+  "version": "1.0.0",
+  "description": "Checks a list of domain names and compare their whois nameserver with one provided.",
+  "main": "index.js",
+  "author": "Will Schwanke <wschwanke@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.4.0"
+  },
+  "dependencies": {
+    "csv-parse": "^2.0.0",
+    "minimist": "^1.2.0",
+    "whois": "^2.5.0"
+  }
+}
