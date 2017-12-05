@@ -7,7 +7,6 @@ let delimiter = ',' || argv.n;
 let domainColName = 'Domain' || argv.d;
 const regExp = /^Name Server.+?$/g;
 let nameServers = argv.ns;
-let 
 
 
 // csvParser calls the csvParse function from csv-parse node module. The default delimiter is `,`,
@@ -23,7 +22,9 @@ const csvParser = csvParse({ delimiter: ',', columns: true }, (err, data) => {
           // If there is an error display it in the console
           console.error('Error: ', err);
         }
+        // Check to see if we can find the nameserver
         matchArray = whois.match(nameServers);
+        // If we can't then lets display the domain name and whois information to double check
         if (!matchArray) {
           console.log('Domain Name: ', data[csvRow][domainColName]);
           console.log(whois)
