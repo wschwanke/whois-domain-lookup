@@ -5,8 +5,9 @@ const csvParse = require('csv-parse');
 
 let delimiter = ',' || argv.n;
 let domainColName = 'Domain' || argv.d;
-const regExp = /^Name Server.+?$/gm;
-let nameServers = ''
+const regExp = /^Name Server.+?$/g;
+let nameServers = argv.ns;
+let 
 
 
 // csvParser calls the csvParse function from csv-parse node module. The default delimiter is `,`,
@@ -17,13 +18,18 @@ const csvParser = csvParse({ delimiter: ',', columns: true }, (err, data) => {
     // We do a setTimeout becaue there is a limit to how often we can get info from the whois database
     setTimeout(() => {
       whois.lookup(data[csvRow][domainColName], (err, whois) => {
+        let matchArray = [];
         if (err) {
           // If there is an error display it in the console
           console.error('Error: ', err);
         }
-        
+        matchArray = whois.match(nameServers);
+        if (!matchArray) {
+          console.log('Domain Name: ', data[csvRow][domainColName]);
+          console.log(whois)
+        }
       });
-    }, csvRow * 100);
+    }, csvRow * 120);
   }
 });
 

@@ -1,7 +1,7 @@
 {
   "name": "NameserverChecker",
   "version": "1.0.0",
-  "description": "Checks a list of domain names and compare their whois nameserver with one provided.",
+  "description": "Checks a CSV file of domain names and compare their whois nameserver with one provided.",
   "main": "index.js",
   "author": "Will Schwanke <wschwanke@gmail.com>",
   "license": "MIT",
